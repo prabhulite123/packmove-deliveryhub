@@ -68,7 +68,8 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ service, index }) => {
             <img 
               src={service.image} 
               alt={service.title}
-              className="max-h-full max-w-full object-contain service-icon"
+              className="max-h-full w-auto object-contain"
+              style={service.id === "packaging" ? { maxWidth: "100%" } : {}}
             />
           )}
         </motion.div>

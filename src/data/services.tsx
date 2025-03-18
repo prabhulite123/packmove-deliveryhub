@@ -3,7 +3,7 @@ import { Package, Truck, Ship, Home } from 'lucide-react';
 import { ServiceType } from '../types/service';
 
 // Stock images for services
-const packagingImage = "https://images.unsplash.com/photo-1635439968416-7a35be95f968?q=80&w=1000&auto=format&fit=crop";
+const packagingImage = "/lovable-uploads/f1b6cc25-2a55-4910-85cb-1d8caeb39b0c.png";
 const movingImage = "https://images.unsplash.com/photo-1586864089956-13623eac1f42?q=80&w=1000&auto=format&fit=crop";
 const shippingImage = "https://images.unsplash.com/photo-1620063652328-6a0a0a639dea?q=80&w=1000&auto=format&fit=crop";
 const deliveryImage = "https://images.unsplash.com/photo-1579195140248-3767f858f619?q=80&w=1000&auto=format&fit=crop";
