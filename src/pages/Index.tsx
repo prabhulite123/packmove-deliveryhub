@@ -3,37 +3,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Package, Truck, Ship, Home, MessageCircle, ArrowRight } from 'lucide-react';
-
-const serviceData = [
-  {
-    id: "packaging",
-    title: "Professional Packaging",
-    description: "Our professional team ensures your items are securely packed using industry-standard materials and techniques.",
-    icon: Package,
-    color: "bg-blue-100 text-blue-600"
-  },
-  {
-    id: "moving",
-    title: "Efficient Moving",
-    description: "We handle the transportation of your packages with care, using modern vehicles and equipment for safe transit.",
-    icon: Truck,
-    color: "bg-green-100 text-green-600"
-  },
-  {
-    id: "shipping",
-    title: "Global Shipping",
-    description: "Ship your packages worldwide with our international network of shipping partners by air and sea.",
-    icon: Ship,
-    color: "bg-purple-100 text-purple-600"
-  },
-  {
-    id: "delivery",
-    title: "Doorstep Delivery",
-    description: "We ensure your packages reach their final destination safely and on time, delivering right to the doorstep.",
-    icon: Home,
-    color: "bg-orange-100 text-orange-600"
-  }
-];
+import { services } from '../data/services';
+import ServiceSection from '../components/ServiceSection';
 
 // Define the keyframes for the globe rotation animation
 const rotateKeyframes = `
@@ -142,41 +113,8 @@ const Index = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {serviceData.map((service, index) => (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 md:p-8 hover:shadow-xl transition-shadow"
-                >
-                  <div className={`inline-flex items-center px-3 py-1 rounded-full mb-4 ${service.color}`}>
-                    <service.icon className="h-4 w-4 mr-2" />
-                    <span className="text-sm font-medium">Step {index + 1}</span>
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                  
-                  <p className="text-muted-foreground mb-6">
-                    {service.description}
-                  </p>
-                  
-                  <div className="h-48 bg-slate-100 dark:bg-slate-700/50 rounded-lg overflow-hidden mb-4">
-                    <motion.div 
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.3 }}
-                      className="h-full w-full flex items-center justify-center"
-                    >
-                      <service.icon className="h-24 w-24 text-slate-400 dark:text-slate-600" />
-                    </motion.div>
-                  </div>
-                  
-                  <Button variant="ghost" size="sm" className="group">
-                    Learn more
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </motion.div>
+              {services.map((service, index) => (
+                <ServiceSection key={service.id} service={service} index={index} />
               ))}
             </div>
           </div>
@@ -301,3 +239,4 @@ const Index = () => {
 };
 
 export default Index;
+
