@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -18,13 +19,21 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ service, index }) => {
     delivery: 'text-pack-orange bg-pack-orange/10',
   };
 
+  const handleLearnMoreClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="service-card"
+      className="service-card bg-white dark:bg-slate-800 rounded-xl shadow-lg overflow-hidden"
     >
       <div className="p-6 md:p-8">
         <div className={`inline-flex items-center px-3 py-1 rounded-full mb-4 ${colorClasses[service.id as keyof typeof colorClasses]}`}>
@@ -38,7 +47,7 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ service, index }) => {
           {service.description}
         </p>
         
-        <Button variant="ghost" size="sm" className="group">
+        <Button variant="ghost" size="sm" className="group" onClick={handleLearnMoreClick}>
           Learn more
           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Button>
@@ -53,11 +62,15 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ service, index }) => {
           transition={{ duration: 0.3 }}
           className="h-full w-full flex items-center justify-center py-4 px-4"
         >
-          <img 
-            src={service.image} 
-            alt={service.title}
-            className="max-h-full max-w-full object-contain service-icon"
-          />
+          {service.imageType === 'svg' ? (
+            <div dangerouslySetInnerHTML={{ __html: service.image }} className="max-h-full max-w-full" />
+          ) : (
+            <img 
+              src={service.image} 
+              alt={service.title}
+              className="max-h-full max-w-full object-contain service-icon"
+            />
+          )}
         </motion.div>
       </div>
     </motion.div>

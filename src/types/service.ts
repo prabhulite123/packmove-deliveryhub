@@ -8,4 +8,5 @@ export interface ServiceType {
   description: string;
   icon: LucideIcon;
   image: string;
+  imageType?: 'svg' | 'url';
 }
