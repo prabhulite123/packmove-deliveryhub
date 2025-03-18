@@ -35,6 +35,18 @@ const serviceData = [
   }
 ];
 
+// Define the keyframes for the globe rotation animation
+const rotateKeyframes = `
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col relative overflow-x-hidden">
@@ -282,17 +294,8 @@ const Index = () => {
         </div>
       </footer>
 
-      {/* CSS for globe animation */}
-      <style jsx>{`
-        @keyframes rotate {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
+      {/* Add the CSS for globe animation */}
+      <style dangerouslySetInnerHTML={{ __html: rotateKeyframes }} />
     </div>
   );
 };
